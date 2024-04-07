@@ -4,13 +4,14 @@ import AplicationButton from "./Components/Buttons/AplicationButton";
 import "./globals.css";
 import HomeButton from "./Components/Buttons/HomeButton";
 import useHome from "./Logic/useHome";
+import DefaultPage from "./DefaultPage";
 
 export default function Home() {
-  const {currentApp, setCurrentApp, aplications} = useHome()
+  const { currentApp, setCurrentApp, aplications } = useHome()
 
   return (
-    <section className="w-screen h-screen flex flex-row">
-      <aside className="w-[22%] p-5 pt-8 text-black">
+    <section className="w-screen h-screen lg:flex lg:flex-row">
+      <aside className="hidden p-5 pt-8 text-black lg:block lg:w-[22%]">
         <h3 className="font-semibold text-xl">Herramientas...</h3>
         <div className="pt-5">
           <h4 className="font-medium text-lg mb-2">Calculadoras:</h4>
@@ -41,25 +42,24 @@ export default function Home() {
         </div>
       </aside>
       <div
-        className="w-[0.65%] h-[90%] mt-auto mb-auto justify-center bg-gradient-to-b from-violet-200 to-blue-200 rounded-md"
+        className="hidden mt-auto mb-auto justify-center bg-gradient-to-b from-violet-200 to-blue-200 rounded-md lg:block lg:w-[0.65%] lg:h-[90%]"
       ></div>
       <main
-        className="w-[77.35%] p-5 pl-8 text-gray-700 flex justify-center"
+        className="w-screen h-screen p-5 lg:pl-8 text-gray-700 flex justify-center lg:w-[77.35%]"
       >
         <div
-          className="max-w-[700px] max-h-[600px] relative flex flex-col items-center"
+          className="max-w-[700px] max-h-[600px] w-[300px] flex flex-col items-center px-5 relative md:w-[600px] xl:w-[700px]"
         >
           <div
-            className="w-[750px] h-[620px] bg-gradient-to-b from-violet-100 to-blue-200 opacity-60 -z-10 rounded-lg absolute"
+            className="max-w-[700px] h-[700px] w-[300px] bg-gradient-to-b from-violet-100 to-blue-200 opacity-60 -z-10 rounded-lg absolute md:w-[600px] xl:w-[700px] xl:h-[640px]"
           ></div>
+
           <div
-            className="z-10 pt-5 transition-all">
+            className="z-10 pt-5 w-full flex flex-col items-center">
             {
               currentApp ? currentApp :
-                <div id="default" className="">
-                  <h1 className="text-2xl font-semibold text-center">Selecciona una aplicación</h1>
-                  <section className="grid grid-cols-3 gap-8 mt-10">
-
+                <DefaultPage pages={
+                  <>
                     <HomeButton
                       section={aplications.calculator.name}
                       setApp={() => setCurrentApp(aplications.calculator.path)}
@@ -88,8 +88,8 @@ export default function Home() {
                       section={aplications.weight.name}
                       setApp={() => setCurrentApp(aplications.weight.path)}
                     />
-                  </section>
-                </div>
+                  </>
+                } />
             }
           </div>
         </div>

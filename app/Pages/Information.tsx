@@ -1,17 +1,19 @@
+import { MouseEventHandler } from "react";
+import PreviousSection from "../Components/Buttons/PreviousSection";
 import Form from "../Components/Form";
 import Title from "../Components/Title";
 import useForm from "../Logic/useForm";
 import { Information as InformationType } from "../Types/Types";
 
 const information: InformationType = {
-  Byte: 1,
-  Kilobyte: 1024,
-  Megabyte: 1024 * 1024,
-  Gigabyte: 1024 * 1024 * 1024,
-  Terabyte: 1024 * 1024 * 1024 * 1024,
+  Bytes: 1,
+  Kilobytes: 1024,
+  Megabytes: 1024 * 1024,
+  Gigabytes: 1024 * 1024 * 1024,
+  Terabytes: 1024 * 1024 * 1024 * 1024,
 };
 
-export default function Information() {
+export default function Information({handlePrevious}: {handlePrevious: MouseEventHandler}) {
   const { fromOption,
     toOption,
     inputValue,
@@ -23,6 +25,7 @@ export default function Information() {
 
   return (
     <>
+      <PreviousSection func={handlePrevious} />
       <Title title="Convertir unidades de datos" />
       <section>
         <Form

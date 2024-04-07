@@ -31,9 +31,9 @@ export default function Form({
 }) {
 
   return (
-    <form id={id} className="max-w-[700px] mt-20 flex flex-col items-center gap-y-5">
-      <section className="w-full flex flex-row justify-between gap-5">
-        <div className="flex justify-evenly items-center gap-3">
+    <form id={id} className="w-[300px] mt-12 flex flex-col items-center gap-y-5 md:w-[400px]">
+      <section className="w-[260px] flex flex-col gap-5 md:w-[370px]">
+        <div className="flex justify-between items-center">
           <label className="font-normal text-3xl">De:</label>
           <Select
             selectValue={selectTopValue}
@@ -48,7 +48,7 @@ export default function Form({
             }
           />
         </div>
-        <div className="flex justify-evenly items-center gap-3">
+        <div className="flex justify-between items-center">
           <label className="font-normal text-3xl">A:</label>
           <Select
             selectValue={selectBottomValue}
@@ -66,23 +66,24 @@ export default function Form({
       </section>
       <input
        title="input"
-        className="mt-10 h-10 text-xl font-normal w-[350px] rounded-md"
+        className="mt-10 h-10 px-2 text-xl font-normal w-[210px] rounded-md md:w-[300px] md:h-12"
         type="number"
         id="input-value"
         value={inputValueHandler}
         onChange={(e) => setInputValueHandler(e.target.value)}
         required
       />
-      <div className="relative inline-flex  group">
+      <div className="relative inline-flex group">
         <button
-          className="bg-white rounded-md w-[100px] h-8 z-20"
+          type="button"
+          className="bg-white rounded-md w-[100px] h-[38px] z-20 font-bold md:w-[120px] md:h-[42px]"
           onClick={onSubmitFunc}
         >Convertir</button>
         <div
           className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-pink-400 to-sky-300 rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt">
         </div>
       </div>
-      <h3 className="text-2xl w-[420px] text-center">Tu resultado es: {resultForm}</h3>
+      <h3 className="text-2xl mt-5 w-[270px] text-center md:w-[400px]">{resultForm}</h3>
     </form>
   )
 }

@@ -52,10 +52,11 @@ export interface Grades extends Functionality {
 }
 
 export interface Information extends Functionality {
-  Kilobyte: number,
-  Megabyte: number,
-  Gigabyte: number,
-  Terabyte: number,
+  Bytes: number,
+  Kilobytes: number,
+  Megabytes: number,
+  Gigabytes: number,
+  Terabytes: number,
 }
 
 export interface Time extends Functionality {

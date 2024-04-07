@@ -7,7 +7,7 @@ export default function Select({ selectValue, onChangeSelect, options }: { selec
       name="select"
       value={selectValue}
       onChange={onChangeSelect}
-      className="block bg-white rounded-md w-[280px] h-[35px] font-medium"
+      className="block bg-white rounded-md w-[200px] h-[35px] font-medium md:w-[300px]"
     >
       {options}
     </select>

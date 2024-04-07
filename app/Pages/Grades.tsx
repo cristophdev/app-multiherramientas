@@ -1,7 +1,9 @@
+import { MouseEventHandler } from "react";
 import Form from "../Components/Form";
 import Title from "../Components/Title";
 import useForm from "../Logic/useForm";
 import { Grades as GradesType } from "../Types/Types";
+import PreviousSection from "../Components/Buttons/PreviousSection";
 
 const grades: GradesType = {
   Celsius: "Celsius",
@@ -9,7 +11,7 @@ const grades: GradesType = {
   Kelvin: "Kelvin"
 }
 
-export default function Grades() {
+export default function Grades({handlePrevious}: {handlePrevious: MouseEventHandler}) {
   const { fromOption,
     toOption,
     inputValue,
@@ -21,6 +23,7 @@ export default function Grades() {
 
   return (
     <>
+      <PreviousSection func={handlePrevious} />
       <Title title="Convertir grados" />
       <section>
         <Form

@@ -1,3 +1,5 @@
+import { MouseEventHandler } from "react";
+import PreviousSection from "../Components/Buttons/PreviousSection";
 import Form from "../Components/Form"
 import Title from "../Components/Title";
 import useForm from "../Logic/useForm"
@@ -13,7 +15,7 @@ const weight: WeightsType = {
   Kilogramo: 1000
 }
 
-export default function Weight() {
+export default function Weight({handlePrevious}: {handlePrevious: MouseEventHandler}) {
   const { fromOption,
     toOption,
     inputValue,
@@ -25,6 +27,7 @@ export default function Weight() {
 
   return (
     <>
+      <PreviousSection func={handlePrevious} />
       <Title title="Convertir masas" />
       <section>
         <Form

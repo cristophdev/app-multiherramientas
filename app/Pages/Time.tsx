@@ -2,6 +2,8 @@ import Form from "../Components/Form";
 import { Time as TimeType } from "../Types/Types";
 import useForm from "../Logic/useForm";
 import Title from "../Components/Title";
+import { MouseEventHandler } from "react";
+import PreviousSection from "../Components/Buttons/PreviousSection";
 
 const time: TimeType = {
   Segundos: 0.000277777777777777,
@@ -13,7 +15,7 @@ const time: TimeType = {
   Años: 8760
 }
 
-export default function Time() {
+export default function Time({handlePrevious}: {handlePrevious: MouseEventHandler}) {
   const { fromOption,
     toOption,
     inputValue,
@@ -26,6 +28,7 @@ export default function Time() {
 
   return (
     <>
+      <PreviousSection func={handlePrevious} />
       <Title title="Convertir tiempo" />
       <section>
         <Form

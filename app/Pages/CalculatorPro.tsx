@@ -1,8 +1,10 @@
 import useCalculator from "../Logic/useCalculator"
 import CalculatorProButton from "../Components/Buttons/CalculatorProButton";
 import Title from "../Components/Title";
+import { MouseEventHandler } from "react";
+import PreviousSection from "../Components/Buttons/PreviousSection";
 
-export default function CalculatorPro() {
+export default function CalculatorPro({ handlePrevious }: { handlePrevious: MouseEventHandler }) {
   const { value, setValue, onDeleteLastElement, onEqual, onParentheses, onSetValue, handleValue } = useCalculator();
 
   const onSquare = () => {
@@ -59,7 +61,8 @@ export default function CalculatorPro() {
 
   return (
     <>
-     <p className="text-3xl font-bold">Coming soon...</p>
+      <PreviousSection func={handlePrevious} />
+      <Title title="Pronto..." />
       {/* <Title title="Calculadora Avanzada" />
       <section className="text-xl font-semibold">
         <form>

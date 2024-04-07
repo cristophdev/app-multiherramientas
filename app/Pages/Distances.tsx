@@ -1,7 +1,9 @@
+import { MouseEventHandler } from "react";
 import Form from "../Components/Form";
 import Title from "../Components/Title";
 import useForm from "../Logic/useForm";
 import { Distances as DistancesType } from "../Types/Types";
+import PreviousSection from "../Components/Buttons/PreviousSection";
 
 const distances: DistancesType = {
   Milímetros: 0.001,
@@ -13,7 +15,7 @@ const distances: DistancesType = {
   Kilómetros: 1000,
 }
 
-export default function Distances() {
+export default function Distances({handlePrevious}: {handlePrevious: MouseEventHandler}) {
   const { fromOption,
     toOption,
     inputValue,
@@ -25,6 +27,7 @@ export default function Distances() {
 
   return (
     <>
+      <PreviousSection func={handlePrevious} />
       <Title title="Convertir distancias" />
       <section>
         <Form
