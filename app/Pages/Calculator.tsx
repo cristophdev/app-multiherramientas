@@ -2,8 +2,7 @@ import { MouseEventHandler } from "react";
 import CalculatorButton from "../Components/Buttons/CalculatorButton"
 import PreviousSection from "../Components/Buttons/PreviousSection";
 import Title from "../Components/Title";
-import useCalculator from "../Logic/useCalculator"
-import useHome from "../Logic/useHome";
+import useCalculator from "../Logic/useCalculator";
 
 export default function Calculator({handlePrevious}: {handlePrevious: MouseEventHandler}) {
   const { value, setValue, onDeleteLastElement, onEqual, onParentheses, onSetValue, handleValue } = useCalculator();
@@ -24,7 +23,7 @@ export default function Calculator({handlePrevious}: {handlePrevious: MouseEvent
             readOnly
           />
         </form>
-        <div className="w-[350px] grid grid-cols-4 grid-rows-5 mt-2 gap-2">
+        <div className="w-[250px] md:w-[350px] grid grid-cols-4 grid-rows-5 mt-2 gap-2">
           <CalculatorButton value="C" func={() => { setValue("") }} />
           <CalculatorButton value="Del" func={() => { onDeleteLastElement() }} />
           <CalculatorButton value="( )" func={() => { onParentheses() }} />
