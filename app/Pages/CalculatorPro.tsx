@@ -123,11 +123,12 @@ export default function CalculatorPro({ handlePrevious }: { handlePrevious: Mous
             <CalculatorProButton value="." func={() => onSetValue(".")} />
             <CalculatorProButton value="0" func={() => onSetValue("0")} />
             <CalculatorProButton value="=" func={() => onEqual()} />
-            <CalculatorProButton value="+" func={() => onSetValue("+")} /> */}
+            <CalculatorProButton value="+" func={() => onSetValue("+")} />
           </div>
         </div>
       </section >
-    </ >
+      */}
+    </>
   )
 }
 
