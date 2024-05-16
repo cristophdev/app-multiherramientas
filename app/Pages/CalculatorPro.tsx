@@ -8,7 +8,15 @@ export default function CalculatorPro({ handlePrevious }: { handlePrevious: Mous
   const { value, setValue, onDeleteLastElement, onEqual, onParentheses, onSetValue, handleValue } = useCalculator();
 
   const onSquare = () => {
-
+    const strArr = (value).split(/[()+\-/*\s]/);
+    if (strArr.includes("")) {
+      const clearArr = strArr.filter(num => num !== "")
+      console.log(clearArr)
+      const lastStr = Number(clearArr[clearArr.length - 1])
+      const square = String(lastStr * lastStr);
+      console.log(square)
+      onSetValue(square);
+    }
   }
 
   const onPotentiation = () => {
@@ -83,9 +91,8 @@ export default function CalculatorPro({ handlePrevious }: { handlePrevious: Mous
             <button className="w-20 h-20 bg-white rounded-md">ABC</button>
           </aside>
           <div className="grid grid-cols-4 grid-rows-4 gap-2">
-            <CalculatorProButton value="^(2)" func={onSquare} />
-            <CalculatorProButton value="^(n)" func={onPotentiation} />
-            <CalculatorProButton value="^(-1)" func={onNegative} />
+            <CalculatorProButton value="^(2)" func={() => onSetValue("**2")} />
+            <CalculatorProButton value="^(n)" func={() => onSetValue("**")} />
             <CalculatorProButton value="√n" func={onSqrt} />
             <CalculatorProButton value="sen" func={onSine} />
             <CalculatorProButton value="cos" func={onCosine} />
@@ -96,8 +103,9 @@ export default function CalculatorPro({ handlePrevious }: { handlePrevious: Mous
             <CalculatorProButton value="n/n" func={onFraction} />
             <CalculatorProButton value="n n/n" func={onNumberMix} />
             <CalculatorProButton value="ans" func={onAns} />
-            <CalculatorProButton value="," func={() => { setValue(",") }} />
-            <CalculatorProButton value="( )" func={() => onParentheses} />
+            <CalculatorProButton value="," func={() => { onSetValue(",") }} />
+            <CalculatorProButton value="( )" func={() => onParentheses()} />
+            <CalculatorProButton value="clr" func={() => setValue("")} />
           </div>
           <div className="grid grid-cols-4 gap-2">
             <CalculatorProButton value="7" func={() => onSetValue("7")} />
@@ -115,10 +123,10 @@ export default function CalculatorPro({ handlePrevious }: { handlePrevious: Mous
             <CalculatorProButton value="." func={() => onSetValue(".")} />
             <CalculatorProButton value="0" func={() => onSetValue("0")} />
             <CalculatorProButton value="=" func={() => onEqual()} />
-            <CalculatorProButton value="+" func={() => onSetValue("+")} />
+            <CalculatorProButton value="+" func={() => onSetValue("+")} /> */}
           </div>
         </div>
-      </section > */}
+      </section >
     </ >
   )
 }

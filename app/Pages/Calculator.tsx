@@ -4,8 +4,32 @@ import PreviousSection from "../Components/Buttons/PreviousSection";
 import Title from "../Components/Title";
 import useCalculator from "../Logic/useCalculator";
 
-export default function Calculator({handlePrevious}: {handlePrevious: MouseEventHandler}) {
+export default function Calculator({ handlePrevious }: { handlePrevious: MouseEventHandler }) {
   const { value, setValue, onDeleteLastElement, onEqual, onParentheses, onSetValue, handleValue } = useCalculator();
+
+  const buttons = [
+    { val: "C", func: () => setValue("") },
+    { val: "Del", func: () => onDeleteLastElement() },
+    { val: "( )", func: () => onParentheses() },
+    { val: "÷", func: () => onSetValue("/") },
+    { val: "7", func: () => onSetValue("7") },
+    { val: "8", func: () => onSetValue("8") },
+    { val: "9", func: () => onSetValue("9") },
+    { val: "×", func: () => onSetValue("*") },
+    { val: "4", func: () => onSetValue("4") },
+    { val: "5", func: () => onSetValue("5") },
+    { val: "6", func: () => onSetValue("6") },
+    { val: "-", func: () => onSetValue("-") },
+    { val: "1", func: () => onSetValue("1") },
+    { val: "2", func: () => onSetValue("2") },
+    { val: "3", func: () => onSetValue("3") },
+    { val: "+", func: () => onSetValue("+") },
+    { val: "+/-", func: () => { } },
+    { val: "0", func: () => onSetValue("0") },
+    { val: ".", func: () => onSetValue(".") },
+    { val: "=", func: () => onEqual() }
+  ];
+
 
   return (
     <>
@@ -24,27 +48,11 @@ export default function Calculator({handlePrevious}: {handlePrevious: MouseEvent
           />
         </form>
         <div className="w-[250px] md:w-[350px] grid grid-cols-4 grid-rows-5 mt-2 gap-2">
-          <CalculatorButton value="C" func={() => { setValue("") }} />
-          <CalculatorButton value="Del" func={() => { onDeleteLastElement() }} />
-          <CalculatorButton value="( )" func={() => { onParentheses() }} />
-          <CalculatorButton value="÷" func={() => { onSetValue("/") }} />
-          <CalculatorButton value="7" func={() => { onSetValue("7") }} />
-          <CalculatorButton value="8" func={() => { onSetValue("8") }} />
-          <CalculatorButton value="9" func={() => { onSetValue("9") }} />
-          <CalculatorButton value="×" func={() => { onSetValue("*") }} />
-          <CalculatorButton value="4" func={() => { onSetValue("4") }} />
-          <CalculatorButton value="5" func={() => { onSetValue("5") }} />
-          <CalculatorButton value="6" func={() => { onSetValue("6") }} />
-          <CalculatorButton value="-" func={() => { onSetValue("-") }} />
-          <CalculatorButton value="1" func={() => { onSetValue("1") }} />
-          <CalculatorButton value="2" func={() => { onSetValue("2") }} />
-          <CalculatorButton value="3" func={() => { onSetValue("3") }} />
-          <CalculatorButton value="+" func={() => { onSetValue("+") }} />
-          <CalculatorButton value="+/-" func={() => { }} />
-          <CalculatorButton value="0" func={() => { onSetValue("0") }} />
-          <CalculatorButton value="." func={() => { onSetValue(".") }} />
-          <CalculatorButton value="=" func={() => { onEqual() }} />
-
+          {buttons.map((btn) => {
+            return (
+              <CalculatorButton key={btn.val} value={btn.val} func={btn.func} />
+            )
+          })}
         </div>
       </section>
     </>
