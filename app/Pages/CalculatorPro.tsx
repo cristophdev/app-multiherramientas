@@ -81,12 +81,12 @@ export default function CalculatorPro({ handlePrevious }: { handlePrevious: Mous
     { val: "TAN", func: () => tangent() },
     { val: "**", func: () => onSetValue("**") },
     { val: "**2", func: () => onSetValue("**2") },
-    { val: "ln", func: () => { } },
-    { val: "log10", func: () => { } },
-    { val: "root", func: () => { } },
-    { val: "rootP", func: () => { } },
-    { val: "n/n", func: () => { } },
-    { val: "n n/n", func: () => { } },
+    { val: "ln", func: () => { alert("Bajo construcción :)") } },
+    { val: "log10", func: () => { alert("Bajo construcción :)") } },
+    { val: "root", func: () => { alert("Bajo construcción :)") } },
+    { val: "rootP", func: () => { alert("Bajo construcción :)") } },
+    { val: "n/n", func: () => { alert("Bajo construcción :)") } },
+    { val: "n n/n", func: () => { alert("Bajo construcción :)") } },
   ]
 
   const buttons = [
