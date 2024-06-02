@@ -43,7 +43,7 @@ export default function Calculator({ handlePrevious }: { handlePrevious: MouseEv
             value={value}
             onChange={handleValue}
             name="display"
-            className="w-[250px] h-10 px-2 rounded-md md:w-[350px] md:h-16"
+            className="w-[250px] h-10 px-3 rounded-md md:w-[350px] md:h-16 text-right"
             readOnly
           />
         </form>

@@ -12,68 +12,16 @@ export default function CalculatorPro({ handlePrevious }: { handlePrevious: Mous
     onParentheses,
     onSetValue,
     handleValue,
-    replaceFromEnd,
-    strWithoutOps,
+    turnValue,
     onEval,
     sine,
-    cosine, 
-    tangent
-
+    cosine,
+    tangent,
+    ln,
+    log,
+    root,
+    PI,
   } = useCalculator();
-
-  /*
-  square
-  potentiation
-  sin, cos, tan
-  ln, log10
-  square root, roots
-  pi
-  fractions, mixed fractions
-  */
-
-  const turnValue = () => {
-  const regexGeneral = /[^\d()\-\+*/]+/g;
-  const regexNumeric = /[^\d]+/g;
-
-  //general values
-  const strGeneral = value.split(regexGeneral);
-  const lastStrGeneral = strGeneral[strGeneral.length - 1];
-  const finalStr = strWithoutOps(lastStrGeneral);
-
-  //numeric values
-  const strNumeric = value.split(regexNumeric);
-  const strTrimed = strNumeric.filter(num => num !== "");
-  const lastStrNumeric = strTrimed[strTrimed.length - 1];
-
-    if (!lastStrGeneral) {
-      onSetValue("-(");
-    } else if (finalStr === lastStrNumeric) {
-      setValue(replaceFromEnd(finalStr, `-(${lastStrNumeric})`));
-    } else if (finalStr === `-(${lastStrNumeric})`) {
-      setValue(replaceFromEnd(finalStr, lastStrNumeric));
-    } else if (finalStr === `-${lastStrNumeric}`) {
-      setValue(replaceFromEnd(finalStr, `+${lastStrNumeric}`));
-    } else if (finalStr === `(${lastStrNumeric}`) {
-      setValue(replaceFromEnd(finalStr, `-(${lastStrNumeric}`));
-    } else if (finalStr === `-(${lastStrNumeric}`) {
-      setValue(replaceFromEnd(finalStr, lastStrNumeric));
-    } else if (finalStr === `+${lastStrNumeric}`) {
-      setValue(replaceFromEnd(finalStr, `-${lastStrNumeric}`));
-    } else if (finalStr === `*${lastStrNumeric}`) {
-      setValue(replaceFromEnd(finalStr, `*-(${lastStrNumeric})`));
-    } else if (finalStr === `*-${lastStrNumeric}`) {
-      setValue(replaceFromEnd(finalStr, `*${lastStrNumeric}`));
-    } else if (finalStr === `/${lastStrNumeric}`) {
-      setValue(replaceFromEnd(finalStr, `/-(${lastStrNumeric})`));
-    } else if (finalStr === `/-${lastStrNumeric}`) {
-      setValue(replaceFromEnd(finalStr, `/${lastStrNumeric}`));
-    } else if (finalStr === `(${lastStrNumeric})`) {
-      setValue(replaceFromEnd(finalStr, `-(${lastStrNumeric})`));
-    } else {
-      onSetValue("");
-    }
-  }
-
 
   const advancedButtons = [
     { val: "SIN", func: () => sine() },
@@ -81,12 +29,10 @@ export default function CalculatorPro({ handlePrevious }: { handlePrevious: Mous
     { val: "TAN", func: () => tangent() },
     { val: "**", func: () => onSetValue("**") },
     { val: "**2", func: () => onSetValue("**2") },
-    { val: "ln", func: () => { alert("Bajo construcción :)") } },
-    { val: "log10", func: () => { alert("Bajo construcción :)") } },
-    { val: "root", func: () => { alert("Bajo construcción :)") } },
-    { val: "rootP", func: () => { alert("Bajo construcción :)") } },
-    { val: "n/n", func: () => { alert("Bajo construcción :)") } },
-    { val: "n n/n", func: () => { alert("Bajo construcción :)") } },
+    { val: "ln", func: () => { ln() } },
+    { val: "log", func: () => { log() } },
+    { val: "√", func: () => { root() } },
+    { val: "π", func: () => { PI() } },
   ]
 
   const buttons = [
@@ -115,7 +61,6 @@ export default function CalculatorPro({ handlePrevious }: { handlePrevious: Mous
   return (
     <>
       <PreviousSection func={handlePrevious} />
-      {/* <Title title="Pronto..." /> */}
       <Title title="Calculadora Avanzada" />
       <section className="text-xl mt-5 font-semibold">
         <form>
@@ -125,13 +70,12 @@ export default function CalculatorPro({ handlePrevious }: { handlePrevious: Mous
             value={value}
             onChange={handleValue}
             name="display"
-            className="w-[450px] h-16 rounded-md"
+            className="w-[450px] h-16 rounded-md px-5 text-right"
             readOnly
           />
         </form>
         <div className="flex flex-row gap-4 mt-2">
-          <div className="grid grid-cols-3 grid-rows-4 gap-2 h-[80%]">
-            {/* buttons for advanced features */}
+          <div className="grid grid-cols-3 grid-rows-4 gap-2 h-[70%]">
             {advancedButtons.map((btn) => {
               return (
                 <CalculatorProButton key={btn.val} value={btn.val} func={btn.func} />
@@ -139,7 +83,6 @@ export default function CalculatorPro({ handlePrevious }: { handlePrevious: Mous
             })}
           </div>
           <div className="grid grid-cols-4 gap-2">
-            {/* buttons for normal features */}
             {buttons.map((btn) => {
               return (
                 <CalculatorProButton key={btn.val} value={btn.val} func={btn.func} />
@@ -147,6 +90,9 @@ export default function CalculatorPro({ handlePrevious }: { handlePrevious: Mous
             })}
           </div>
         </div>
+        <div className="w-[400px] text-center pt-5 italic opacity-60">
+              <p>Nota: Esta calculadora funciona en la modalidad de grados</p>
+            </div>
       </section >
     </>
   )
