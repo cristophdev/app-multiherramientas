@@ -41,15 +41,18 @@ export default function Home() {
             setApp={() => setCurrentApp(aplications.weight.path)} />
         </div>
       </aside>
+      {/* Line */}
       <div
         className="hidden mt-auto mb-auto justify-center bg-gradient-to-b from-violet-200 to-blue-200 rounded-md lg:block lg:w-[0.65%] lg:h-[90%]"
       ></div>
+
       <main
-        className="w-screen h-screen p-5 lg:pl-8 text-gray-700 flex justify-center lg:w-[77.35%]"
+        className="w-screen h-screen p-5 lg:pl-8 text-gray-700 flex justify-center lg:w-[77.35%] transform transition-transform translate-y-0"
       >
         <div
           className="max-w-[700px] max-h-[600px] w-[300px] flex flex-col items-center px-5 relative md:w-[600px] xl:w-[700px]"
         >
+          {/* Background */}
           <div
             className="max-w-[700px] h-[700px] w-[300px] bg-gradient-to-b from-violet-100 to-blue-200 opacity-60 -z-10 rounded-lg absolute md:w-[600px] xl:w-[700px] xl:h-[640px]"
           ></div>

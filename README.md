@@ -1,7 +1,7 @@
 #Aplicación con varias utilidades
 
 -Calculadora
--Calculadora Cientifica -pronto
+-Calculadora Cientifica
 -Conversión de longitudes
 -Conversión de grados
 -Covnersión de información

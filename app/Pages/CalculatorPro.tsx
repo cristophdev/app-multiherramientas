@@ -70,19 +70,19 @@ export default function CalculatorPro({ handlePrevious }: { handlePrevious: Mous
             value={value}
             onChange={handleValue}
             name="display"
-            className="w-[450px] h-16 rounded-md px-5 text-right"
+            className="w-[250px] h-10 rounded-md px-5 text-right md:w-[450px] md:h-16"
             readOnly
           />
         </form>
-        <div className="flex flex-row gap-4 mt-2">
-          <div className="grid grid-cols-3 grid-rows-4 gap-2 h-[70%]">
+        <div className="flex flex-col md:flex-row gap-4 mt-2">
+          <div className="w-[250px] grid grid-cols-4 md:grid-cols-3 gap-2 md:h-[70%] md:w-auto">
             {advancedButtons.map((btn) => {
               return (
                 <CalculatorProButton key={btn.val} value={btn.val} func={btn.func} />
               )
             })}
           </div>
-          <div className="grid grid-cols-4 gap-2">
+          <div className="w-[250px] grid grid-cols-4 md:grid-cols-4 gap-2 md:w-auto">
             {buttons.map((btn) => {
               return (
                 <CalculatorProButton key={btn.val} value={btn.val} func={btn.func} />
@@ -90,9 +90,9 @@ export default function CalculatorPro({ handlePrevious }: { handlePrevious: Mous
             })}
           </div>
         </div>
-        <div className="w-[400px] text-center pt-5 italic opacity-60">
-              <p>Nota: Esta calculadora funciona en la modalidad de grados</p>
-            </div>
+        <div className="w-[250px] text-center pt-5 italic opacity-60 md:w-[450px]">
+          <p>Nota: Esta calculadora funciona en la modalidad de grados</p>
+        </div>
       </section >
     </>
   )
