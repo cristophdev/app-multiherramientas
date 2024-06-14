@@ -5,6 +5,13 @@ import "./globals.css";
 import HomeButton from "./Components/Buttons/HomeButton";
 import useHome from "./Logic/useHome";
 import DefaultPage from "./DefaultPage";
+import CalculatorSVG from "./SVG/CalculatorSVG";
+import CalculatorProSVG from "./SVG/CalculatorProSVG";
+import Ruler from "./SVG/RulerSVG";
+import TemperatureSVG from "./SVG/TemperatureSVG";
+import ComputerSVG from "./SVG/ComputerSVG";
+import TimeSVG from "./SVG/TimeSVG";
+import WeightSVG from "./SVG/WeightSVG";
 
 export default function Home() {
   const { currentApp, setCurrentApp, aplications } = useHome()
@@ -17,28 +24,42 @@ export default function Home() {
           <h4 className="font-medium text-lg mb-2">Calculadoras:</h4>
           <AplicationButton
             aplication={aplications.calculator.name}
-            setApp={() => setCurrentApp(aplications.calculator.path)} />
+            setApp={() => setCurrentApp(aplications.calculator.path)}
+            svg={CalculatorSVG()}
+          />
           <AplicationButton
             aplication={aplications.calculatorPro.name}
-            setApp={() => setCurrentApp(aplications.calculatorPro.path)} />
+            setApp={() => setCurrentApp(aplications.calculatorPro.path)}
+            svg={CalculatorProSVG()}
+          />
         </div>
         <div className="pt-5">
           <h4 className="font-medium text-lg mb-2">Convertir medidas:</h4>
           <AplicationButton
             aplication={aplications.distances.name}
-            setApp={() => setCurrentApp(aplications.distances.path)} />
+            setApp={() => setCurrentApp(aplications.distances.path)} 
+            svg={Ruler()} 
+            />
           <AplicationButton
             aplication={aplications.grades.name}
-            setApp={() => setCurrentApp(aplications.grades.path)} />
+            setApp={() => setCurrentApp(aplications.grades.path)} 
+            svg={TemperatureSVG()}
+            />
           <AplicationButton
             aplication={aplications.information.name}
-            setApp={() => setCurrentApp(aplications.information.path)} />
+            setApp={() => setCurrentApp(aplications.information.path)} 
+            svg={ComputerSVG()}
+            />
           <AplicationButton
             aplication={aplications.time.name}
-            setApp={() => setCurrentApp(aplications.time.path)} />
+            setApp={() => setCurrentApp(aplications.time.path)} 
+            svg={TimeSVG()}
+            />
           <AplicationButton
             aplication={aplications.weight.name}
-            setApp={() => setCurrentApp(aplications.weight.path)} />
+            setApp={() => setCurrentApp(aplications.weight.path)} 
+            svg={WeightSVG()}
+            />
         </div>
       </aside>
       {/* Line */}
